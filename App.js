@@ -104,17 +104,21 @@ class TaskManager extends Component {
         <View style={styles.container}>
           <Text style={styles.header}>Task Manager</Text>
           <TextInput
-            style={styles.input}
-            placeholder="Enter task"
-            value={task}
-            onChangeText={(task) => this.setState({ task })}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Time to complete (e.g., 30 mins)"
-            value={time}
-            onChangeText={(time) => this.setState({ time })}
-          />
+          style={styles.input}
+          placeholder="Enter task"
+          value={this.state.task}
+          onChangeText={(task) => this.setState({ task })}
+          onSubmitEditing={(task) => this.setState({ task })} // Handle submit on "Done" press
+          blurOnSubmit={false} // Prevent auto-blur
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Time to complete (e.g., 30 mins)"
+          value={this.state.time}
+          onChangeText={(time) => this.setState({ time })}
+          onSubmitEditing={(task) => this.setState({ task })} // Handle submit on "Done" press
+          blurOnSubmit={false} // Prevent auto-blur
+        />
           <TouchableOpacity style={styles.button} onPress={this.saveTasks}>
             <Text style={styles.buttonText}>Add Task</Text>
           </TouchableOpacity>
@@ -170,6 +174,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    marginTop:70,
   },
   input: {
     width: '100%',
